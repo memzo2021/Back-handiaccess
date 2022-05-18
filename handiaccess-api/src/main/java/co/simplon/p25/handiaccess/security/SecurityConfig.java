@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	http.cors().and().csrf().disable().logout().disable().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 		.antMatchers("/users/**").permitAll().and().authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/stations/names", "/countries/table-items").permitAll().and()
+		.antMatchers(HttpMethod.GET, "/stations/names", "/stations", "/countries/table-items").permitAll().and()
 		.authorizeRequests().anyRequest().authenticated().and().oauth2ResourceServer().jwt();
     }
 

@@ -1,7 +1,5 @@
 package co.simplon.p25.handiaccess.services;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import co.simplon.p25.handiaccess.entities.Station;
@@ -17,9 +15,9 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public List<Station> getIdentities() {
-	// return repository.findAllProjectedBy("name");
-	return null;
+    public Station getById(Long id) {
+	return repository.findById(id).get();
+
     }
 
 }

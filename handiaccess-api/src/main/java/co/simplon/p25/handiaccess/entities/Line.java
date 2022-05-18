@@ -1,10 +1,15 @@
 package co.simplon.p25.handiaccess.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +23,12 @@ public class Line {
     @Column(name = "number")
     private int number;
 
-    @Column(name = "landing_door")
-    boolean landing_door;
+    @Column(name = "landingDoor")
+    private boolean landingDoor;
+
+    @ManyToMany
+    @JoinTable(name = "lines_stations", joinColumns = @JoinColumn(name = "line_id"), inverseJoinColumns = @JoinColumn(name = "station_id"))
+    private List<Station> stations;
 
     public Line() {
     }
@@ -36,17 +45,17 @@ public class Line {
 	this.number = number;
     }
 
-    public boolean isLanding_door() {
-	return landing_door;
+    public boolean isLandingDoor() {
+	return landingDoor;
     }
 
-    public void setLanding_door(boolean landing_door) {
-	this.landing_door = landing_door;
+    public void setLanding_door(boolean landingDoor) {
+	this.landingDoor = landingDoor;
     }
 
     @Override
     public String toString() {
-	return String.format("{id=%s,number=%s,landing_door=%s}", id, number, landing_door);
+	return String.format("{id=%s,number=%s,landingDoor=%s}", id, number, landingDoor);
     }
 
 }

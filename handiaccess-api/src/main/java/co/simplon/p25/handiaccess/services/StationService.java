@@ -1,11 +1,19 @@
 package co.simplon.p25.handiaccess.services;
 
-import java.util.List;
-
 import co.simplon.p25.handiaccess.entities.Station;
 
 public interface StationService {
 
-    List<Station> getIdentities();
+    /*
+     * Station listId(int id);
+     * 
+     * Station add(Station s);
+     * 
+     * Station edit(Station s);
+     * 
+     * Station delete(Long id);
+     */
+
+    Station getById(Long id);
 
 }

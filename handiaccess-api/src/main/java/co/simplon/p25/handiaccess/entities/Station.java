@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,17 +19,13 @@ public class Station {
     private String name;
 
     @Column(name = "lift")
-    boolean lift;
+    private boolean lift;
 
     @Column(name = "escalator")
-    boolean escalator;
+    private boolean escalator;
 
-    @Column(name = "call terminal")
-    boolean call_terminal;
-
-    @ManyToOne
-    @JoinColumn(name = "ligne_id")
-    private Line ligne;
+    @Column(name = "call_terminal")
+    private boolean callTerminal;
 
     public Station() {
 
@@ -57,26 +51,17 @@ public class Station {
 	this.escalator = escalator;
     }
 
-    public boolean isCall_terminal() {
-	return call_terminal;
+    public boolean isCallTerminal() {
+	return callTerminal;
     }
 
-    public void setCall_terminal(boolean call_terminal) {
-	this.call_terminal = call_terminal;
-    }
-
-    public Line getLigne() {
-	return ligne;
-    }
-
-    public void setLigne(Line ligne) {
-	this.ligne = ligne;
+    public void setCallTerminal(boolean callTerminal) {
+	this.callTerminal = callTerminal;
     }
 
     @Override
     public String toString() {
-	return String.format("{id=%s,name=%s,lift=%s,escalator=%s,call_terminal=%s}", id, lift, escalator,
-		call_terminal);
+	return String.format("{id=%s,name=%s,lift=%s,escalator=%s,callTerminal=%s}", id, lift, escalator, callTerminal);
     }
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.simplon.p25.handiaccess.entities.Line;
+import co.simplon.p25.handiaccess.dtos.LineIdentity;
 import co.simplon.p25.handiaccess.repositories.LineRepository;
 
 @Service
@@ -17,7 +17,7 @@ public class LigneServiceImpl implements LineService {
     }
 
     @Override
-    public List<Line> getIdentities() {
+    public List<LineIdentity> getIdentities() {
 	return repository.findAllProjectedBy();
     }
 

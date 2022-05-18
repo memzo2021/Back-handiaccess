@@ -1,6 +1,6 @@
 package co.simplon.p25.handiaccess.dtos;
 
-public interface StationName {
+public interface StationName {//
 
     String getName();
 
@@ -8,5 +8,5 @@ public interface StationName {
 
     boolean getEscalator();
 
-    boolean getCall_terminal();
+    boolean getCall_terminal();// VOIR LE NOMMAGE
 }

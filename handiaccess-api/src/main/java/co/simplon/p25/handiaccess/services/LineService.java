@@ -2,10 +2,10 @@ package co.simplon.p25.handiaccess.services;
 
 import java.util.List;
 
-import co.simplon.p25.handiaccess.entities.Line;
+import co.simplon.p25.handiaccess.dtos.LineIdentity;
 
 public interface LineService {
 
-    List<Line> getIdentities();
+    List<LineIdentity> getIdentities();
 
 }
