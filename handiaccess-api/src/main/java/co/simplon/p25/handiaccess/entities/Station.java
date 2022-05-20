@@ -47,6 +47,14 @@ public class Station {
 	return escalator;
     }
 
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
     public void setEscalator(boolean escalator) {
 	this.escalator = escalator;
     }

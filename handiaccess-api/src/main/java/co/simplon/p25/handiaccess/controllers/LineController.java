@@ -19,7 +19,7 @@ public class LineController {
 
     }
 
-    @GetMapping // ("/numbers")
+    @GetMapping("/numbers")
     public List<LineIdentity> getIdentities() {
 	return service.getIdentities();
 

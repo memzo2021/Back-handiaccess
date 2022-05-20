@@ -10,13 +10,12 @@ import co.simplon.p25.handiaccess.entities.Station;
 
 @Repository
 public interface StationRepository extends JpaRepository<Station, Long> {
+
     Optional<Station> findById(Long id);
 
-    List<Station> findAll();
+    <T> List<T> findAllProjectedBy(Class<T> type);
 
-    // Station findOne(int id);
-
-    Station save(Station s);
+    List<Station> findAllByOrderByName();
 
     void delete(Station s);
 }

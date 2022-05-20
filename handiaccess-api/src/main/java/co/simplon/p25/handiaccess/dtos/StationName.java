@@ -8,5 +8,5 @@ public interface StationName {//
 
     boolean getEscalator();
 
-    boolean getCall_terminal();// VOIR LE NOMMAGE
+    boolean getCallTerminal();// VOIR LE NOMMAGE
 }
