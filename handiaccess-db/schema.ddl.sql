@@ -1,14 +1,16 @@
-/*
- * *
+ /*
  * DDL = Data Definition Language
- * Command lines from 'handiaccess-db' folder:
- * psql -h localhost -p 5432 -U postgres -d handiaccess
+ * Command lines from 'handiaccessdb' folder:
+ * psql -h localhost -p 5432 -U postgres -d handiaccessdb
  * \i schema.ddl.sql
  * \q
  */
-
+ 
  CREATE TABLE roles (
  	id SERIAL PRIMARY KEY,
+ 	
+ 	
+ 	
  	name VARCHAR(60)  UNIQUE NOT NULL
  );
  
@@ -19,11 +21,12 @@
  	role_id INTEGER,
  	CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES roles(id)
  );
- 
 CREATE TABLE lines (
- 
+/*
+ * UNIQUE
+ */ 
  id SERIAL PRIMARY KEY,
- number INTEGER UNIQUE NOT NULL,
+ number  INTEGER NOT NULL,   
  landing_door BOOLEAN NOT NULL
   
  );
@@ -37,9 +40,7 @@ CREATE TABLE stations(
  call_terminal BOOLEAN NOT NULL
    
  );
- 
- 
- CREATE TABLE lines_stations(
+CREATE TABLE lines_stations(
  	line_id INTEGER,
 	station_id INTEGER,
   	PRIMARY KEY (line_id, station_id),
@@ -53,6 +54,4 @@ CREATE TABLE stations(
  
  
  );
- 
- 
- 
+

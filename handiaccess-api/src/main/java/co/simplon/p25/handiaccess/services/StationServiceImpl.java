@@ -15,11 +15,13 @@ public class StationServiceImpl implements StationService {
 
     private final StationRepository stations;
 
-    public StationServiceImpl(StationRepository stations) {
-	this.stations = stations;
+//------------------------------------------------------------
+    public StationServiceImpl(StationRepository repository) {
+	this.stations = repository;
 
     }
 
+//------------------------------------------------------------
     @Override
     public List<Station> getStations() {
 	return stations.findAllByOrderByName();
@@ -32,11 +34,6 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public List<StationUpdate> getStationUpdate() {
-	return stations.findAllProjectedBy(StationUpdate.class);
-    }
-
-    @Override
     @Transactional
     public void updateStationById(Long id, StationUpdate inputs) {
 	Station station = stations.findById(id).get();
@@ -46,6 +43,15 @@ public class StationServiceImpl implements StationService {
 	station.setName(inputs.getName());
 	stations.save(station);
 
+    }
+
+    @Override
+    public List<StationUpdate> getStationUpdate() {
+	return stations.findAllProjectedBy(StationUpdate.class);
+    }
+
+    public Station updateStationById(Long id) {
+	return stations.findById(id).get();
     }
 
     @Override

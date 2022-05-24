@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	User user = repository.findByUsernameIgnoreCase(username).orElseThrow(
 		() -> new BadCredentialsException(String.format("no user founf whith username '%s'", username)));
 	String password = inputs.getPassword();
-	if (!encoder.matches(password, user.getPassword())) {
+	if (!encoder.matches(password, user.getPassword().trim())) { // a modifier (char(60) BDD)
 	    throw new BadCredentialsException(String.format("password does not match for username '%s'", username));
 	}
 	Role role = user.getRole();
@@ -45,5 +45,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	return provider.create(String.valueOf(user.getId()), roles);
+    }
+
+    @Override
+    public List<User> getAllTest() {
+	List<User> listUser = repository.findAll();
+	return listUser;
     }
 }

@@ -19,4 +19,6 @@ public interface StationService {
     void deleteStationById(Long id);
 
     void createStation(StationCreate station);
+
+    Station updateStationById(Long id);
 }

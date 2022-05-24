@@ -38,8 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	http.cors().and().csrf().disable().logout().disable().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-		.antMatchers("/users/**").permitAll().and().authorizeRequests().and().authorizeRequests().anyRequest()
-		.authenticated().and().oauth2ResourceServer().jwt();
+		.antMatchers("/users/**").permitAll().and().authorizeRequests()
+		// .and().authorizeRequests().anyRequest().authenticated()
+		.and().oauth2ResourceServer().jwt();
     }
 
     @Bean

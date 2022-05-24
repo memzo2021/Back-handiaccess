@@ -17,5 +17,4 @@ public interface StationRepository extends JpaRepository<Station, Long> {
 
     List<Station> findAllByOrderByName();
 
-    void delete(Station s);
 }
