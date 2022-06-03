@@ -8,9 +8,6 @@
  
  CREATE TABLE roles (
  	id SERIAL PRIMARY KEY,
- 	
- 	
- 	
  	name VARCHAR(60)  UNIQUE NOT NULL
  );
  
@@ -21,17 +18,14 @@
  	role_id INTEGER,
  	CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES roles(id)
  );
+ 
+ 
 CREATE TABLE lines (
-/*
- * UNIQUE
- */ 
  id SERIAL PRIMARY KEY,
  number  INTEGER NOT NULL,   
- landing_door BOOLEAN NOT NULL
-  
+ landing_door BOOLEAN NOT NULL 
  );
 
- 
 CREATE TABLE stations(
  id SERIAL PRIMARY KEY,
  name VARCHAR(60)  UNIQUE NOT NULL,
@@ -50,8 +44,5 @@ CREATE TABLE lines_stations(
   	CONSTRAINT fk_station_id
     	FOREIGN KEY (station_id)
     	REFERENCES stations(id)
-
- 
- 
  );
 

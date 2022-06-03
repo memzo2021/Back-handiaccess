@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.p25.handiaccess.dtos.StationCreate;
 import co.simplon.p25.handiaccess.dtos.StationUpdate;
+import co.simplon.p25.handiaccess.dtos.StationView;
 import co.simplon.p25.handiaccess.entities.Station;
 import co.simplon.p25.handiaccess.services.StationService;
 
@@ -34,7 +35,7 @@ public class StationController {
     }
 
     @GetMapping("/names")
-    public List<Station> getStations() {
+    public List<StationView> getStations() {
 
 	return service.getStations();
 

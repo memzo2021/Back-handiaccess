@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.p25.handiaccess.dtos.StationCreate;
 import co.simplon.p25.handiaccess.dtos.StationUpdate;
+import co.simplon.p25.handiaccess.dtos.StationView;
 import co.simplon.p25.handiaccess.entities.Station;
 import co.simplon.p25.handiaccess.repositories.StationRepository;
 
@@ -23,8 +24,8 @@ public class StationServiceImpl implements StationService {
 
 //------------------------------------------------------------
     @Override
-    public List<Station> getStations() {
-	return stations.findAllByOrderByName();
+    public List<StationView> getStations() {
+	return stations.findAllProjectedBy();
     }
 
     @Override
