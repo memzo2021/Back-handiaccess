@@ -52,7 +52,7 @@ public class StationController {
 	service.deleteStationById(id);
     }
 
-    @GetMapping("/stupdate")
+    @GetMapping("/stup")
     public Station updateStationById(@PathVariable("id") Long id) {
 	return service.updateStationById(id);
     }
