@@ -2,6 +2,7 @@
 
 
 
+DROP DATABASE IF EXISTS handiaccessdb;
 
 
 

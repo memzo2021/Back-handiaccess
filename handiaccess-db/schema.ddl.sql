@@ -5,6 +5,12 @@
  * \i schema.ddl.sql
  * \q
  */
+ DROP TABLE IF EXISTS roles;
+ DROP TABLE IF EXISTS users;
+ DROP TABLE IF EXISTS lines;
+ DROP TABLE IF EXISTS stations;
+ DROP TABLE IF EXISTS lines_stations;
+
  
  CREATE TABLE roles (
  	id SERIAL PRIMARY KEY,
