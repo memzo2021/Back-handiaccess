@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.simplon.p25.handiaccess.dtos.StationAdminView;
 import co.simplon.p25.handiaccess.dtos.StationCreate;
 import co.simplon.p25.handiaccess.dtos.StationUpdate;
 import co.simplon.p25.handiaccess.dtos.StationView;
@@ -34,11 +35,14 @@ public class StationController {
 	return service.getById(id);
     }
 
-    @GetMapping("/names")
+    @GetMapping
     public List<StationView> getStations() {
-
 	return service.getStations();
+    }
 
+    @GetMapping("/admin-view")
+    public List<StationAdminView> getAdminStations() {
+	return service.getAdminStations();
     }
 
     @PostMapping
@@ -50,11 +54,6 @@ public class StationController {
     @DeleteMapping("/{id}")
     public void deleteStation(@PathVariable("id") Long id) {
 	service.deleteStationById(id);
-    }
-
-    @GetMapping("/update")
-    public List<StationUpdate> getStationUpdate() {
-	return service.getStationUpdate();
     }
 
     @PutMapping("/{id}")

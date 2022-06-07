@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.simplon.p25.handiaccess.dtos.StationAdminView;
 import co.simplon.p25.handiaccess.dtos.StationCreate;
 import co.simplon.p25.handiaccess.dtos.StationUpdate;
 import co.simplon.p25.handiaccess.dtos.StationView;
+import co.simplon.p25.handiaccess.entities.Line;
 import co.simplon.p25.handiaccess.entities.Station;
+import co.simplon.p25.handiaccess.repositories.LineRepository;
 import co.simplon.p25.handiaccess.repositories.StationRepository;
 
 @Service
@@ -16,9 +19,12 @@ public class StationServiceImpl implements StationService {
 
     private final StationRepository stations;
 
+    private final LineRepository lines;
+
 //------------------------------------------------------------
-    public StationServiceImpl(StationRepository repository) {
+    public StationServiceImpl(StationRepository repository, LineRepository lines) {
 	this.stations = repository;
+	this.lines = lines;
 
     }
 
@@ -44,15 +50,19 @@ public class StationServiceImpl implements StationService {
 	station.setName(inputs.getName());
 	stations.save(station);
 
-    }
-
-    @Override
-    public List<StationUpdate> getStationUpdate() {
-	return stations.findAllProjectedBy(StationUpdate.class);
-    }
-
-    public Station updateStationById(Long id) {
-	return stations.findById(id).get();
+	Long lineId = inputs.getLineId();
+	Line line = lines.findById(lineId).get();
+	List<Station> lineStations = line.getStations();
+	boolean present = false;
+	for (Station lineStation : lineStations) {
+	    if (lineStation.getId().equals(id)) {
+		present = true;
+	    }
+	}
+	if (!present) {
+	    lineStations.add(station);
+	    lines.save(line);
+	}
     }
 
     @Override
@@ -64,13 +74,22 @@ public class StationServiceImpl implements StationService {
 	station.setLift(inputs.isLift());
 	station.setName(inputs.getName());
 	stations.save(station);
-
+	Long lineId = inputs.getLineId();
+	Line line = lines.findById(lineId).get();
+	List<Station> lineStations = line.getStations();
+	lineStations.add(station);
+	lines.save(line);
     }
 
     @Override
     @Transactional
     public void deleteStationById(Long id) {
 	stations.deleteById(id);
+    }
+
+    @Override
+    public List<StationAdminView> getAdminStations() {
+	return stations.findAllProjectedByOrderByName(StationAdminView.class);
     }
 
 }

@@ -49,13 +49,20 @@ public class Line {
 	return landingDoor;
     }
 
-    public void setLanding_door(boolean landingDoor) {
+    public void setLandingDoor(boolean landingDoor) {
 	this.landingDoor = landingDoor;
+    }
+
+    public List<Station> getStations() {
+	return stations;
+    }
+
+    public void setStations(List<Station> stations) {
+	this.stations = stations;
     }
 
     @Override
     public String toString() {
 	return String.format("{id=%s,number=%s,landingDoor=%s}", id, number, landingDoor);
     }
-
 }

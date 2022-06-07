@@ -18,45 +18,43 @@ DELETE FROM lines_stations;
   INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
 
   INSERT INTO users (username, password, role_id) VALUES ('mahomedmachel@gmail.com','$2a$12$ptxQNPEXGEIi09oZ6LeK1OlJDSR6sodhhFn8rSII3H45bss7/hsIm',(SELECT r.id FROM roles r WHERE r.name = 'ROLE_ADMIN'));
-  INSERT INTO users (username, password) VALUES ('memzohabou@gmail.com','$2a$10$jtjVcOpwmLp4Zqn2vHYLUeTSqnXxrvU3FIzuFI2nt62U1FAAbhq3S');
+  INSERT INTO users (username, password) VALUES ('memzohabou@gmail.com','$2a$12$YvrKLnBlEHRtFLpFaR3fOO3A9bZuV.YGw2S6vIjVJ0zLscywR5Z4m');
 
     INSERT INTO lines (number, landing_door) VALUES
-    (8,FALSE),(14,TRUE),(13,FALSE),(2,FALSE),(6,FALSE),
-    (4,TRUE),(10,FALSE),(12,FALSE),(5,FALSE),
-    (11,FALSE),(3,FALSE),(7,FALSE),(9,FALSE),(1,TRUE);
+    (1,TRUE),(2,FALSE),(3,FALSE),(4,TRUE),(5,FALSE),
+    (6,FALSE),(7,FALSE),(8,FALSE),(9,FALSE),
+    (10,FALSE),(11,FALSE),(12,FALSE),(13,FALSE),(14,TRUE);
  
   INSERT INTO stations(name,lift,escalator,call_terminal) VALUES
- ('NATION',FALSE,FALSE,TRUE),
+ ('REUILLY-DIDEROT',FALSE,TRUE,TRUE),
+ ('VILLERS',FALSE,FALSE,TRUE),
+ ('GAMBETTA',FALSE,FALSE,TRUE),
  ('REAUMUR-SEBASTOPOL',FALSE,FALSE,TRUE),
- ('RASPAIL',FALSE,FALSE,TRUE),
- ('CITE',TRUE,FALSE,TRUE),
- ('LEDRU-ROLIN',FALSE,FALSE,TRUE),
- ('SAINT-LAZARE',TRUE,TRUE,TRUE),
- ('MARCADET-POISSONNIERS',TRUE,TRUE,TRUE),
- ('CHATELET',TRUE,TRUE,TRUE),
- ('POISSONNIERE',FALSE,FALSE,TRUE);
+ ('BASTILLE',FALSE,FALSE,TRUE),
+ ('DUPLEIX',FALSE,FALSE,TRUE),
+ ('CADET',FALSE,FALSE,TRUE),
+ ('LEDRU ROLLIN',FALSE,FALSE,TRUE),
+ ('SAINT LAZARE',TRUE,TRUE,TRUE);
  
  INSERT INTO lines_stations VALUES 
- ((select l.id FROM lines l WHERE l.number = 9),
- (SELECT l.id FROM stations l WHERE l.name ='NATION')),
+ ((select l.id FROM lines l WHERE l.number = 1),
+ (SELECT l.id FROM stations l WHERE l.name ='REUILLY-DIDEROT')),
+ ((select l.id FROM lines l WHERE l.number = 2),
+ (SELECT l.id FROM stations l WHERE l.name ='VILLERS')),
  ((select l.id FROM lines l WHERE l.number = 3),
- (SELECT l.id FROM stations l WHERE l.name ='REAUMUR-SEBASTOPOL')),
- ((select l.id FROM lines l WHERE l.number = 6),
- (SELECT l.id FROM stations l WHERE l.name ='RASPAIL')),
- ((select l.id FROM lines l WHERE l.number = 14),
- (SELECT l.id FROM stations l WHERE l.name ='SAINT-LAZARE')),
- ((select l.id FROM lines l WHERE l.number = 8),
- (SELECT l.id FROM stations l WHERE l.name ='LEDRU-ROLIN')),
- ((select l.id FROM lines l WHERE l.number = 12),
- (SELECT l.id FROM stations l WHERE l.name ='MARCADET-POISSONNIERS')),
- ((select l.id FROM lines l WHERE l.number = 11),
- (SELECT l.id FROM stations l WHERE l.name ='CHATELET')),
- 
- 
+ (SELECT l.id FROM stations l WHERE l.name ='GAMBETTA')),
  ((select l.id FROM lines l WHERE l.number = 4),
- (SELECT l.id FROM stations l WHERE l.name ='CITE')),
+ (SELECT l.id FROM stations l WHERE l.name ='REAUMUR-SEBASTOPOL')),
+ ((select l.id FROM lines l WHERE l.number = 5),
+ (SELECT l.id FROM stations l WHERE l.name ='BASTILLE')),
+ ((select l.id FROM lines l WHERE l.number = 6),
+ (SELECT l.id FROM stations l WHERE l.name ='DUPLEIX')),
  ((select l.id FROM lines l WHERE l.number = 7),
- (SELECT l.id FROM stations l WHERE l.name ='POISSONNIERE'));
+ (SELECT l.id FROM stations l WHERE l.name ='CADET')),
+ ((select l.id FROM lines l WHERE l.number = 8),
+ (SELECT l.id FROM stations l WHERE l.name ='LEDRU ROLLIN')),
+ ((select l.id FROM lines l WHERE l.number = 14),
+ (SELECT l.id FROM stations l WHERE l.name ='SAINT LAZARE'));
  
  
  

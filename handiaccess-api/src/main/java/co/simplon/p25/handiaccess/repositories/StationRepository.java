@@ -15,13 +15,11 @@ public interface StationRepository extends JpaRepository<Station, Long> {
 
     Optional<Station> findById(Long id);
 
-    <T> List<T> findAllProjectedBy(Class<T> type);
-
-    List<Station> findAllByOrderByName();
+    <T> List<T> findAllProjectedByOrderByName(Class<T> type);
 
     @Query("select s.id as id, s.lift as lift, s.escalator as escalator, "
 	    + "s.name as name, s.callTerminal as callTerminal, l.number as lineNumber, "
-	    + "l.landingDoor as lineLandingDoor from Line l join l.stations s")
+	    + "l.landingDoor as lineLandingDoor from Line l join l.stations s " + "order by s.name")
     List<StationView> findAllProjectedBy();
 
 }

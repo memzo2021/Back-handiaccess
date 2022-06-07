@@ -2,6 +2,7 @@ package co.simplon.p25.handiaccess.services;
 
 import java.util.List;
 
+import co.simplon.p25.handiaccess.dtos.StationAdminView;
 import co.simplon.p25.handiaccess.dtos.StationCreate;
 import co.simplon.p25.handiaccess.dtos.StationUpdate;
 import co.simplon.p25.handiaccess.dtos.StationView;
@@ -15,11 +16,9 @@ public interface StationService {
 
     void updateStationById(Long id, StationUpdate station);
 
-    List<StationUpdate> getStationUpdate();
-
     void deleteStationById(Long id);
 
     void createStation(StationCreate station);
 
-    Station updateStationById(Long id);
+    List<StationAdminView> getAdminStations();
 }

@@ -5,6 +5,7 @@ public class StationCreate {
     private boolean lift;
     private boolean escalator;
     private boolean callTerminal;
+    private Long lineId;
 
     public StationCreate() {
 	super();
@@ -40,6 +41,14 @@ public class StationCreate {
 
     public void setCallTerminal(boolean callTerminal) {
 	this.callTerminal = callTerminal;
+    }
+
+    public Long getLineId() {
+	return lineId;
+    }
+
+    public void setLineId(Long lineId) {
+	this.lineId = lineId;
     }
 
 }

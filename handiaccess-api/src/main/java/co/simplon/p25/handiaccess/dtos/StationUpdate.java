@@ -9,6 +9,7 @@ public class StationUpdate {
     private boolean escalator;
 
     private boolean callTerminal;
+    private Long lineId;
 
     public StationUpdate() {
 
@@ -44,6 +45,14 @@ public class StationUpdate {
 
     public void setCallTerminal(boolean callTerminal) {
 	this.callTerminal = callTerminal;
+    }
+
+    public Long getLineId() {
+	return lineId;
+    }
+
+    public void setLineId(Long lineId) {
+	this.lineId = lineId;
     }
 
 }
