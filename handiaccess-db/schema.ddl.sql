@@ -40,6 +40,7 @@ CREATE TABLE stations(
  call_terminal BOOLEAN NOT NULL
    
  );
+ 
 CREATE TABLE lines_stations(
  	line_id INTEGER,
 	station_id INTEGER,
