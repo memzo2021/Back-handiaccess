@@ -21,14 +21,12 @@ public class StationServiceImpl implements StationService {
 
     private final LineRepository lines;
 
-//------------------------------------------------------------
     public StationServiceImpl(StationRepository repository, LineRepository lines) {
 	this.stations = repository;
 	this.lines = lines;
 
     }
 
-//------------------------------------------------------------
     @Override
     public List<StationView> getStations() {
 	return stations.findAllProjectedBy();
@@ -49,7 +47,6 @@ public class StationServiceImpl implements StationService {
 	station.setLift(inputs.isLift());
 	station.setName(inputs.getName());
 	stations.save(station);
-
 	Long lineId = inputs.getLineId();
 	Line line = lines.findById(lineId).get();
 	List<Station> lineStations = line.getStations();
